@@ -1,0 +1,14 @@
+.button {
+    width: 10vh;
+	height:10vh;
+	border: none;
+    font-size: 10vh;
+	padding: 0;
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
+    background-color: #f3dfd8;
+    color: grey;
+}
+
+.button:focus {outline:0;}

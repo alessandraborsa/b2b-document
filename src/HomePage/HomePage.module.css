@@ -1,0 +1,14 @@
+.homePage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bodyHome {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+

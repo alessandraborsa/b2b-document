@@ -1,0 +1,11 @@
+.title h1{
+    font-weight: bold;
+    font-size: 5vw;
+    background: -webkit-linear-gradient(#cc5200, #803300);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1%;
+    margin-top: 0;
+  }
+
+ 
