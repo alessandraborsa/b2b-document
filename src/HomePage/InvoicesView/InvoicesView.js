@@ -8,15 +8,12 @@ const InvoicesView = (props) =>  {
         return (
             props.documents.map(doc => (
                 <Invoice 
+                    key={doc.idDocument}
                     id={doc.idDocument} 
                     delDate={doc.deliveryDate}
                     docDate={doc.documentDate}
                     docNum={doc.documentNumber}
                     type={doc.flowType}
-                    
-                    idConfronto={props.documents[0].idDocument}
-                    // setShow={props.setShow}
-                    // notifications={doc.listNotifications}
                     />
             ))
         )
@@ -31,12 +28,9 @@ const InvoicesView = (props) =>  {
                 <th>documentNumber</th>
                 <th>flowType</th>
             </tr>
-           
                 {(props.documents.length > 0 && elements())}
-          
         </table>
     )
-    
 };
 
 export default InvoicesView;

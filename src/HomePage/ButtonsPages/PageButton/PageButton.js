@@ -2,7 +2,7 @@ import React from 'react';
 import './PageButton.css';
 
 const pageButton = (props) => (
-    <button>1</button>
+    <button onClick={props.click}>{props.numPage}</button>
 );
 
 export default pageButton;
