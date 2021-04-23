@@ -9,6 +9,7 @@
     display: inline-flex;
     background-color: #f3dfd8;
     color: grey;
+    cursor: pointer;
 }
 
 .button:focus {outline:0;}

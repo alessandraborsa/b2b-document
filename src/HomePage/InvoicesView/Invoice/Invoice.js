@@ -1,6 +1,6 @@
 import classes from './Invoice.module.css';
 import React, { useState } from 'react';
-import Notification from './Notification/Notification';
+import NotificationsContainer from './NotificationsContainer/NotificationsContainer';
 import axios from 'axios';
 
 const Invoice = (props) => {
@@ -24,9 +24,9 @@ const Invoice = (props) => {
                 <td>{props.docDate}</td>
                 <td>{props.docNum}</td>
                 <td>{props.type}</td>
-                <td onClick={() => showNotifications()}>↓</td>
+                <td className={classes.arrow} onClick={() => showNotifications()}>↓</td>
             </tr>
-            {(show==true && notifications.length > 0) ? (notifications.map(not => (<Notification notification={not}/>))) : null}
+            {(show==true && notifications.length > 0) ? <NotificationsContainer notifications={notifications}/> : null}
         </>
     )
 };

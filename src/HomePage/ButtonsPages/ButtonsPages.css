@@ -1,0 +1,28 @@
+.buttons-pages {
+    margin-top: 1vw;
+    display: flex;
+    flex-direction: row;
+ 
+}
+
+.buttons-pages button {
+    background-color: #edcfc4;
+    border-radius: 2px;
+    cursor: pointer;
+    border: 1px solid grey;
+    font-size: x-small;
+    box-shadow: 1px 1px 2px grey;
+}
+
+.buttons-pages button:active {
+    transform: translateY(1px);
+    box-shadow: 0 5px 10px rgb(0,0,0,.2);
+}
+
+.button-jumper button{
+    background-color: #f9efeb;
+}
+
+.button-page {
+    margin: 0 4px;
+}

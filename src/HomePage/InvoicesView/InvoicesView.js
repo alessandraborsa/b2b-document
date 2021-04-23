@@ -29,6 +29,7 @@ const InvoicesView = (props) =>  {
                 <th>flowType</th>
             </tr>
                 {(props.documents.length > 0 && elements())}
+            <p>pag. {props.currentPage}</p>
         </table>
     )
 };

@@ -9,20 +9,20 @@ import ButtonsPages from './ButtonsPages/ButtonsPages';
 const HomePage = () => {
 
     const [documents, setDocuments] = useState([]);
-    const [pageDx, setPageDx] = useState(0);
-    const [pageSx, setPageSx] = useState(0);
+    const [pageDx, setPageDx] = useState([0,0]);
+    const [pageSx, setPageSx] = useState([0,0]);
     const [countPages, setCountPages] = useState(0);
     
-    const fetchAxios = (pageFetch, pageDx, pageSx) => {axios.get('http://localhost:8080/api/document/all?first_doc=' + pageFetch)
+    const fetchAxios = (pageFetch) => {axios.get('http://localhost:8080/api/document/all?first_doc=' + pageFetch)
         .then(response => {
             setDocuments(response.data);
-            setPageDx(pageDx)
-            setPageSx(pageSx);
+            setPageDx([pageFetch + 20, pageFetch/20 + 1])
+            setPageSx([pageFetch - 20, pageFetch/20 + 1]);
         });
     };
 
     useEffect(() => {
-        fetchAxios(0, 20, 0);
+        fetchAxios(0);
         axios.get('http://localhost:8080/api/document/count')
             .then(response => {
                 setCountPages(response.data);
@@ -30,18 +30,16 @@ const HomePage = () => {
     }, []);
 
     const switchHandler = (param) => {
-
         if (param == '>') {
-            fetchAxios(pageDx, pageDx + 20, pageDx - 20);
+            fetchAxios(pageDx[0]);
         } 
-
         if (param == '<') {
-            fetchAxios(pageSx, pageSx + 20, pageSx - 20);
+            fetchAxios(pageSx[0]);
         }
     }
 
     const findPageByNum = (numPage) => {
-        fetchAxios(numPage, numPage + 20, numPage - 20);
+        fetchAxios(numPage);
     }
 
     return (
@@ -49,15 +47,12 @@ const HomePage = () => {
             <Title />
             <div className={classes.bodyHome}>
                 <Button btn={"<"} click={() => switchHandler('<')}/>
-                <InvoicesView documents={documents} />
+                <InvoicesView documents={documents} currentPage={pageDx[1]}/>
                 <Button btn={">"} click={() => switchHandler('>')}/>
             </div>
-            <ButtonsPages findPageByNum={findPageByNum} numPages={countPages > 0 ? countPages : null} />   
-
+            <ButtonsPages currentPage={pageDx[1]} findPageByNum={findPageByNum} numPages={countPages > 0 ? countPages : null} />   
         </div>
     )
 };
 
 export default HomePage;
-
-// numPage={(documents.length > 0 ? ((documents[0].idDocument-1)/20 + 1) : ' ')}
